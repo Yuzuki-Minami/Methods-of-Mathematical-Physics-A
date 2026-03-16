@@ -1,0 +1,533 @@
+\documentclass[12pt]{article}
+\linespread{1.2}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tabularray}
+\UseTblrLibrary{tikz,functional,amsmath}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,graphicx,upgreek}
+\usepackage{amsmath,mathtools}
+\usepackage{bm}
+\usepackage{float} % For [H] float placement
+\usepackage[colorlinks,linkcolor=black,]{hyperref}
+\usepackage{xeCJK}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm, a4paper]{geometry}
+\setCJKmainfont{FandolKai}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{application}{Application}[section]
+\newtheorem{inference}{Inference}[section]
+\newcommand{\de}[1]{\mathrm{d}#1}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ca}[1]{\mathcal{#1}}
+\newcommand{\dd}[1]{\frac{\mathrm{d}}{\mathrm{d}#1}}
+\newcommand{\kh}[1]{\left(#1\right)}
+\newcommand{\zkh}[1]{\left[#1\right]}
+\newcommand{\dkh}[1]{\left.#1\right\}}
+\newcommand{\dkhz}[1]{\left\{#1\right.}
+\newcommand{\sh}[1]{^{#1}}
+\newcommand{\xia}[1]{_{#1}}
+\newcommand{\ed}[1]{\(\rm{(end)}\)}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\color{red}{#1}}
+\usepackage{xcolor}
+
+% 定义新颜色
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{blue}{HTML}{0000FF}
+\definecolor{green}{cmyk}{1,0,1,0}
+
+\title{Methods of Mathematical Physics A\\Assignment 2}
+\author{H.R. Yu}
+\date{March 9, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+Let \( z = r \mathrm{e}^{\mathrm{i}\theta} \), then \( \Delta z = \mathrm{e}^{\mathrm{i}\theta} \Delta r + \mathrm{i} r \mathrm{e}^{\mathrm{i}\theta} \Delta \theta \).
+
+\begin{align*}
+f'(z) &= \lim_{\Delta r \to 0} \frac{[u(r+\Delta r, \theta) + \mathrm{i} v(r+\Delta r, \theta)] - [u(r, \theta) + \mathrm{i} v(r, \theta)]}{\mathrm{e}^{\mathrm{i}\theta} \Delta r} \\
+&= \lim_{\Delta r \to 0} \frac{[u(r+\Delta r, \theta) - u(r, \theta)] + \mathrm{i} [v(r+\Delta r, \theta) - v(r, \theta)]}{\mathrm{e}^{\mathrm{i}\theta} \Delta r} \\
+&= \mathrm{e}^{-\mathrm{i}\theta} \left( \frac{\partial u}{\partial r} + \mathrm{i} \frac{\partial v}{\partial r} \right).
+\end{align*}
+
+\begin{align*}
+f'(z) &= \lim_{\Delta \theta \to 0} \frac{[u(r, \theta+\Delta \theta) + \mathrm{i} v(r, \theta+\Delta \theta)] - [u(r, \theta) + \mathrm{i} v(r, \theta)]}{\mathrm{i} r \mathrm{e}^{\mathrm{i}\theta} \Delta \theta} \\
+&= \lim_{\Delta \theta \to 0} \frac{[u(r, \theta+\Delta \theta) - u(r, \theta)] + \mathrm{i} [v(r, \theta+\Delta \theta) - v(r, \theta)]}{\mathrm{i} r \mathrm{e}^{\mathrm{i}\theta} \Delta \theta} \\
+&= \frac{\mathrm{e}^{-\mathrm{i}\theta}}{\mathrm{i} r} \left( \frac{\partial u}{\partial \theta} + \mathrm{i} \frac{\partial v}{\partial \theta} \right) \\&= \frac{\mathrm{e}^{-\mathrm{i}\theta}}{r} \left( -\mathrm{i} \frac{\partial u}{\partial \theta} + \frac{\partial v}{\partial \theta} \right).
+\end{align*}
+
+Therefore,
+\begin{align*}
+&\frac{\partial u}{\partial r} = \frac{1}{r} \frac{\partial v}{\partial \theta}, \\
+&\frac{\partial v}{\partial r} = -\frac{1}{r} \frac{\partial u}{\partial \theta}.
+\end{align*}
+
+\begin{align*}
+f'(z) &= \frac{r}{r \mathrm{e}^{\mathrm{i}\theta}} \left( \frac{\partial u}{\partial r} + \mathrm{i} \frac{\partial v}{\partial r} \right) = \frac{r}{z} \left( \frac{\partial u}{\partial r} + \mathrm{i} \frac{\partial v}{\partial r} \right), \\
+f'(z) &= \frac{1}{r \mathrm{e}^{\mathrm{i}\theta}} \left( \frac{\partial v}{\partial \theta} - \mathrm{i} \frac{\partial u}{\partial \theta} \right) = \frac{1}{z} \left( \frac{\partial v}{\partial \theta} - \mathrm{i} \frac{\partial u}{\partial \theta} \right).
+\end{align*}
+\section{}
+From the Cauchy-Riemann Equations, we have
+\begin{align*}
+&\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \\
+&\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
+\end{align*}
+\subsection{}
+For \( u(x,y) = x^2 - y^2 + x \), the Cauchy-Riemann Equations are
+\begin{align*}
+&\frac{\partial u}{\partial x} = 2x + 1 = \frac{\partial v}{\partial y}, \\
+&\frac{\partial u}{\partial y} = -2y = -\frac{\partial v}{\partial x}.
+\end{align*}
+
+Then
+\begin{align*}
+v(x,y) &= \int (2x + 1) \, \mathrm{d}y = 2xy + y + \phi(x).
+\end{align*}
+
+Taking partial derivative with respect to \( x \):
+\begin{align*}
+\frac{\partial v}{\partial x} = 2y + \frac{\mathrm{d}\phi}{\mathrm{d}x} = 2y,
+\end{align*}
+therefore \( \phi = \text{const} = C \).
+
+Thus,
+\begin{align*}
+f(z) &= (x^2 - y^2 + x) + \mathrm{i}(2xy + y + C) \\
+&= (x + \mathrm{i}y)^2 + (x + \mathrm{i}y) + \mathrm{i}C \\
+&= z^2 + z + \mathrm{i}C.
+\end{align*}
+\subsection{}
+For \( u(x,y) = \frac{x}{x^2 + y^2} \), the Cauchy-Riemann Equations are
+\begin{align*}
+&\frac{\partial u}{\partial x} = \frac{y^2 - x^2}{(x^2 + y^2)^2} = \frac{\partial v}{\partial y}, \\
+&\frac{\partial u}{\partial y} = -\frac{2xy}{(x^2 + y^2)^2} = -\frac{\partial v}{\partial x}.
+\end{align*}
+
+Then
+\begin{align*}
+v(x,y) &= \int \frac{2xy}{(x^2 + y^2)^2} \, \mathrm{d}x = -\frac{y}{x^2 + y^2} + \psi(y).
+\end{align*}
+
+Taking partial derivative with respect to \( y \):
+\begin{align*}
+\frac{\partial v}{\partial y} = \frac{y^2 - x^2}{(x^2 + y^2)^2} + \frac{\mathrm{d}\psi}{\mathrm{d}y} = \frac{y^2 - x^2}{(x^2 + y^2)^2},
+\end{align*}
+therefore \( \psi = \text{const} = C \).
+
+Thus,
+\begin{align*}
+f(z) &= \frac{x}{x^2 + y^2} - \mathrm{i} \frac{y}{x^2 + y^2} + \mathrm{i}C \\
+&= \frac{\overline{z}}{|z|^2} + \mathrm{i}C \\
+&= \frac{1}{z} + \mathrm{i}C.
+\end{align*}
+\subsection{}
+For \( u(x,y) = \mathrm{e}^y \cos x \), the Cauchy-Riemann Equations are
+\begin{align*}
+&\frac{\partial u}{\partial x} = -\mathrm{e}^y \sin x = \frac{\partial v}{\partial y}, \\
+&\frac{\partial u}{\partial y} = \mathrm{e}^y \cos x = -\frac{\partial v}{\partial x}.
+\end{align*}
+
+Then
+\begin{align*}
+v(x,y) &= \int -\mathrm{e}^y \sin x \, \mathrm{d}y = -\mathrm{e}^y \sin x + \phi(x).
+\end{align*}
+
+Taking partial derivative with respect to \( x \):
+\begin{align*}
+\frac{\partial v}{\partial x} = -\mathrm{e}^y \cos x + \frac{\mathrm{d}\phi}{\mathrm{d}x} = -\mathrm{e}^y \cos x,
+\end{align*}
+therefore \( \phi = \text{const} = C \).
+
+Thus,
+\begin{align*}
+f(z) &= \mathrm{e}^y \cos x - \mathrm{i} \mathrm{e}^y \sin x + \mathrm{i}C \\
+&= \mathrm{e}^y \mathrm{e}^{-\mathrm{i}x} + \mathrm{i}C \\
+&= \mathrm{e}^{-\mathrm{i}(x + \mathrm{i}y)} + \mathrm{i}C \\
+&= \mathrm{e}^{-\mathrm{i}z} + \mathrm{i}C.
+\end{align*}
+\subsection{}
+For \( u(x,y) = \cos x \cosh y \), the Cauchy-Riemann Equations are
+\begin{align*}
+&\frac{\partial u}{\partial x} = -\sin x \cosh y = \frac{\partial v}{\partial y}, \\
+&\frac{\partial u}{\partial y} = \cos x \sinh y = -\frac{\partial v}{\partial x}.
+\end{align*}
+
+Then
+\begin{align*}
+v(x,y) &= \int -\cos x \sinh y \, \mathrm{d}x = -\sin x \sinh y + \psi(y).
+\end{align*}
+
+Taking partial derivative with respect to \( y \):
+\begin{align*}
+\frac{\partial v}{\partial y} = -\sin x \cosh y + \frac{\mathrm{d}\psi}{\mathrm{d}y} = -\sin x \cosh y,
+\end{align*}
+therefore \( \psi = \text{const} = C \).
+
+Thus,
+\begin{align*}
+f(z) &= \cos x \cosh y - \mathrm{i} \sin x \sinh y + \mathrm{i}C \\
+&= \frac{1}{4}\times \left[ (\mathrm{e}^{\mathrm{i}x} + \mathrm{e}^{-\mathrm{i}x})(\mathrm{e}^y + \mathrm{e}^{-y}) - (\mathrm{e}^{\mathrm{i}x} - \mathrm{e}^{-\mathrm{i}x})(\mathrm{e}^y - \mathrm{e}^{-y}) \right] + \mathrm{i}C \\
+&= \frac{1}{4} \times\left( \mathrm{e}^{\mathrm{i}x+y} + \mathrm{e}^{\mathrm{i}x-y} + \mathrm{e}^{-\mathrm{i}x+y} + \mathrm{e}^{-\mathrm{i}x-y} - \mathrm{e}^{\mathrm{i}x+y} + \mathrm{e}^{\mathrm{i}x-y} + \mathrm{e}^{-\mathrm{i}x+y} - \mathrm{e}^{-\mathrm{i}x-y} \right) + \mathrm{i}C \\
+&= \frac{\mathrm{e}^{\mathrm{i}x-y} + \mathrm{e}^{-\mathrm{i}x+y}}{2} + \mathrm{i}C \\
+&= \frac{\mathrm{e}^{\mathrm{i}(x+\mathrm{i}y)} + \mathrm{e}^{-\mathrm{i}(x+\mathrm{i}y)}}{2} + \mathrm{i}C \\
+&= \cos z + \mathrm{i}C.
+\end{align*}
+\section{}
+由 \( f(z) \) 解析，则 Cauchy–Riemann Equations 适用:
+\begin{align*}
+&\frac{\partial u}{\partial {x}} = \frac{\partial v}{\partial {y}}, \\
+&\frac{\partial u}{\partial {y}} = -\frac{\partial v}{\partial {x}}.
+\end{align*}
+
+From \( u - v = \left(x - y\right)\left(x^2 + 4xy + y^2\right) \), we have
+\begin{align*}
+\frac{\partial u}{\partial {x}} - \frac{\partial v}{\partial {x}} &= x^2 + 4xy + y^2 + 2\left(x + 2y\right)\left(x - y\right) = 3\left(x^2 + 2xy - y^2\right), \\
+\frac{\partial u}{\partial {y}} - \frac{\partial v}{\partial {y}} &= -\left(x^2 + 4xy + y^2\right) + 2\left(x - y\right)\left(2x + y\right) = 3\left(x^2 - 2xy - y^2\right).
+\end{align*}
+
+Substituting into the Cauchy–Riemann Equations, we have
+\begin{align*}
+\frac{\partial u}{\partial {x}} + \frac{\partial u}{\partial {y}} &= 3\left(x^2 + 2xy - y^2\right), \\
+\frac{\partial u}{\partial {y}} - \frac{\partial u}{\partial {x}} &= 3\left(x^2 - 2xy - y^2\right).
+\end{align*}
+\begin{align*}
+\implies
+\frac{\partial u}{\partial {x}} &= 6xy, \\
+\frac{\partial u}{\partial {y}} &= 3\left(x^2 - y^2\right)
+\end{align*}
+\begin{align*}
+u(x,y) &= \int 6xy \, \mathrm{d}x = 3x^2 y + \psi(y). \\
+\frac{\partial u}{\partial {y}} &= 3x^2 + \frac{\mathrm{d}\psi}{\mathrm{d}y} = 3\left(x^2 - y^2\right),
+\end{align*}
+
+therefore
+
+\begin{align*}
+\frac{\mathrm{d}\psi}{\mathrm{d}y} &= -3y^2, \\
+\psi(y) &= \int -3y^2 \, \mathrm{d}y = -y^3 + C'.
+\end{align*}
+
+\begin{align*}
+u(x,y) &= 3x^2 y - y^3 + C'. \\
+v(x,y) &= u - \left(x - y\right)\left(x^2 + 4xy + y^2\right) \\
+&= -x^3 + 3x y^2 + C'.
+\end{align*}
+
+Thus,
+\begin{align*}
+f(z) &= u + \mathrm{i}v \\
+&= -\mathrm{i}\left(x^3 - \mathrm{i}y^3 - 3x y^2 + \mathrm{i}3x^2 y\right) + C'\left(1 + \mathrm{i}\right) \\
+&= -\mathrm{i} z^3 + {C},
+\end{align*}
+where \( C = C'\left(1 + \mathrm{i}\right) \).
+\section{}
+\subsection{}
+\begin{align*}
+\sin z = \frac{e^{\mrm iz} - e^{-\mrm iz}}{2\mathrm{i}} &= \frac{3}{4} + \frac{1}{4}\mathrm{i}, \\
+2\left(e^{\mrm iz} - \frac{1}{e^{\mrm iz}}\right) &= 3\mathrm{i} - 1.
+\end{align*}
+
+Let \(e^{\mrm iz} = w\), we have
+\begin{align*}
+2\left(w - \frac{1}{w}\right) &= 3\mathrm{i} - 1, \\
+2w^2 + (1 - 3\mathrm{i})w - 2 &= 0.
+\end{align*}
+\begin{align*}
+w &= \frac{(3\mathrm{i} - 1) \pm \sqrt{8 - 6\mathrm{i}}}{4} \\
+&= \frac{(\mathrm{i}3 - 1) \pm (3 - \mathrm{i})}{4}.
+\end{align*}
+
+Therefore \(w = \frac{1+\mathrm{i}}{2}\), or \(w = -1+\mathrm{i}\).
+\begin{align*}
+z &= -\mathrm{i}\ln w \\
+&= -\mathrm{i}\ln|w| + \arg(w).
+\end{align*}
+
+Thus,
+\begin{align*}
+z &= \mathrm{i}\frac{1}{2}\ln 2 + \frac{\pi}{4} + 2\mrm n\pi, \quad \text{or} \quad z = -\mathrm{i}\frac{1}{2}\ln 2 + \frac{3\pi}{4} + 2\mrm n\pi,\;\mrm n \in \mathbb{Z}.
+\end{align*}
+\subsection{}
+\begin{align*}
+\cos z = \frac{e^{\mrm iz} + e^{-\mrm iz}}{2} &= 4, \\
+e^{\mrm iz} + e^{-\mrm iz} &= 8.
+\end{align*}
+
+Let \(e^{\mrm iz} = w\), we have
+\begin{align*}
+w^2 - 8w + 1 &= 0, \\
+w &= 4 \pm \sqrt{15}.
+\end{align*}
+\begin{align*}
+z &= -\mathrm{i}\ln w \\
+&= -\mathrm{i}\ln|w| + \arg(w).
+\end{align*}
+
+Thus,
+\begin{align*}
+z &= -\mathrm{i}\ln\kh{4 \pm \sqrt{15}} + 2\mrm n\pi, \; \mrm n \in \mathbb{Z}.
+\end{align*}
+\subsection{}
+\begin{align*}
+\tan z &= \frac{e^{\mrm iz} - e^{-\mrm iz}}{\mathrm{i}(e^{\mrm iz} + e^{-\mrm iz})} = \mathrm{i}, \\
+2e^{\mrm iz} &= 0.
+\end{align*}
+\begin{align*}
+    z&=-\mrm i\ln\kh{0}+\mrm{arg}\kh{0}\text{\;\;无定义}.
+\end{align*}
+Therefore, there is no solution.
+\subsection{}
+Let \(\cosh z = w\), we have
+\begin{align*}
+2w^2 - 3w + 1 &= (2w - 1)(w - 1) = 0,
+\end{align*}
+therefore \(w = \frac{1}{2}\), or \(w = 1\).
+
+From \(\cosh z = \frac{e^z + e^{-z}}{2}\), we have
+\begin{align*}
+e^z + e^{-z} &= 1, \quad \text{or} \quad e^z + e^{-z} = 2, \\
+\Rightarrow e^{z} &= \frac{1 \pm \mathrm{i}\sqrt{3}}{2}, \quad \text{or} \quad e^{z} = 1.
+\end{align*}
+\begin{align*}
+z &= \ln|e^{z}| + \mathrm{i}\arg(e^{z})
+\end{align*}
+
+Thus,
+\begin{align*}
+    z=\mrm i\kh{\pm\frac{\pi}{3}+2\mrm n\pi},\quad\text{or}\quad z=\mrm i2\mrm n\pi,\;\mrm n\in\mathbb{Z}.
+\end{align*}
+\section{}
+\subsection{}
+Branch point: $a,\ b$.
+
+Let
+\begin{align*}
+z-a &= \rho_1 \mrm e^{\mathrm{i}\theta_1},\\ z-b &= \rho_2 \mrm e^{\mathrm{i}\theta_2},
+\end{align*}
+then
+\begin{align*}
+f(z) &= \sqrt{\rho_1\rho_2} \cdot \mrm e^{\mathrm{i}\frac{\theta_1+\theta_2}{2}}.
+\end{align*}
+
+在$\rho_1\to0$时绕分支点$z=a$绕行一周，
+\begin{align*}
+z-b &= (z-a) + a-b = \rho_1 \mrm e^{\mathrm{i}\theta_1} + a-b \approx a-b, \\
+f(z) &= \sqrt{z-a}\sqrt{z-b} \approx \sqrt{\rho_1} \mrm e^{\mathrm{i}\frac{\theta_1}{2}} \times \sqrt{a-b} = \sqrt{(a-b)\rho_1} \mrm e^{\mathrm{i}\frac{\theta_1}{2}}, \\
+f(z_{\text{终}}) &\approx \sqrt{(a-b)\rho_1} \mrm e^{\mathrm{i}\frac{2\pi}{2}} = -\sqrt{(a-b)\rho_1} = -f(z_{\text{初}}),
+\end{align*}
+函数值变号.
+
+同理，在$\rho_2\to0$时绕$z=b$绕行一周，
+\begin{align*}
+z-a &= \rho_2 \mrm e^{\mathrm{i}\theta_2} + b-a \approx b-a, \\
+f(z) &= \sqrt{z-a}\sqrt{z-b} \approx \sqrt{(b-a)\rho_2} \mrm e^{\mathrm{i}\frac{\theta_2}{2}}, \\
+f(z_{\text{终}}) &\approx \sqrt{(b-a)\rho_2} \mrm e^{\mathrm{i}\pi} = -\sqrt{(b-a)\rho_2} = -f(z_{\text{初}}).
+\end{align*}
+函数值变号.
+
+若同时绕$z=a,\ z=b$绕行一周，不妨令$\rho_1,\rho_2\to\infty$，则
+\begin{align*}
+f(z_{\text{终}}) &= \sqrt{\rho_1\rho_2} \mrm e^{\mathrm{i}\frac{\theta_1+\theta_2}{2}} = \sqrt{\rho_1\rho_2} \mrm e^{\mathrm{i}\frac{4\pi}{2}} = \sqrt{\rho_1\rho_2} = f(z_{\text{初}}),
+\end{align*}
+函数值不变.
+\subsection{}
+Branch point: $a,\ b,\ \infty$.
+
+Let
+\begin{align*}
+z-a &= \rho_1 \mrm e^{\mathrm{i}\theta_1}, \\ z-b &= \rho_2 \mrm e^{\mathrm{i}\theta_2}.
+\end{align*}
+
+在$\rho_1\to0$时绕行一周，
+\begin{align*}
+z-b &\approx \rho_1 \mrm e^{\mathrm{i}\theta_1} + a-b \approx a-b, \\
+f(z) &\approx \sqrt[3]{\rho_1(a-b)} \mrm e^{\mathrm{i}\frac{\theta_1}{3}}, \\
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_1(a-b)} \mrm e^{\mathrm{i}\frac{2\pi}{3}} = \mrm e^{\mathrm{i}\frac{2\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+在$\rho_2\to0$时绕行一周，
+\begin{align*}
+z-a &= \rho_2 \mrm e^{\mathrm{i}\theta_2} + b-a \approx b-a, \\
+f(z) &\approx \sqrt[3]{\rho_2(b-a)} \mrm e^{\mathrm{i}\frac{\theta_2}{3}}, \\
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_2(b-a)} \mrm e^{\mathrm{i}\frac{2\pi}{3}} = \mrm e^{\mathrm{i}\frac{2\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+在$\rho_1,\rho_2\to\infty$时绕行一周，
+\begin{align*}
+f(z_{\text{终}}) &= \sqrt[3]{\rho_1\rho_2} \mrm e^{\mathrm{i}\frac{\theta_1+\theta_2}{3}} = \mrm e^{\mathrm{i}\frac{4\pi}{3}} f(z_{\text{初}}),
+\end{align*}
+故无穷远点也为分支点.
+\subsection{}
+Branch point: \(1,\ \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}},\ \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}},\ \infty\).
+
+令 \(1-z^3=0\)，则 \(z=1,\ \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}},\ \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\).
+
+记 \(1-z=\rho_1 \mathrm{e}^{\mathrm{i}\theta_1},\ \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-z=\rho_2 \mathrm{e}^{\mathrm{i}\theta_2},\ \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-z=\rho_3 \mathrm{e}^{\mathrm{i}\theta_3}\).
+则
+\begin{align*}
+f(z) &= \sqrt{1-z^3} \\
+&= \sqrt{(1-z)\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-z\right)\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-z\right)} \\
+&= \sqrt{\rho_1\rho_2\rho_3}\ \mathrm{e}^{\mathrm{i}\frac{\theta_1+\theta_2+\theta_3}{2}}.
+\end{align*}
+
+在 \(\rho_1\to0\) 时绕行一周，
+\begin{align*}
+\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-z &\approx \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-1, \\
+\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-z &\approx \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-1, \\
+f(z) &\approx \sqrt{\rho_1\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-1\right)\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-1\right)} \mathrm{e}^{\mathrm{i}\frac{\theta_1}{2}}, \\
+f(z_{\text{终}}) &\approx \sqrt{\rho_1\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-1\right)\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-1\right)} \mathrm{e}^{\mathrm{i}\pi} = -f(z_{\text{初}}).
+\end{align*}
+
+同理，在 \(\rho_2\to0\) 和 \(\rho_3\to0\) 时分别有
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt{\rho_2\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}\right)\left(1-\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}\right)} \mathrm{e}^{\mathrm{i}\pi} = -f(z_{\text{初}}), \\
+f(z_{\text{终}}) &\approx \sqrt{\rho_3\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\right)\left(1-\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\right)} \mathrm{e}^{\mathrm{i}\pi} = -f(z_{\text{初}}).
+\end{align*}
+
+而当绕行两个分支点时，
+\begin{align*}
+f(z_{\text{终}}) = f(z_{\text{初}}).
+\end{align*}
+
+当绕行三个分支点时，即当 \(\rho_1,\rho_2,\rho_3\to\infty\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt{\rho_1\rho_2\rho_3}\ \mathrm{e}^{\mathrm{i}\frac{6\pi}{2}} = \sqrt{\rho_1\rho_2\rho_3}\ \mathrm{e}^{\mathrm{i}3\pi} = -f(z_{\text{初}}),
+\end{align*}
+故无穷远点也为分支点.
+\subsection{}
+Branch point: \(1,\ \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}},\ \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\).
+
+类似(3),
+\begin{align*}
+f(z) = \sqrt[3]{\rho_1\rho_2\rho_3}\ \mathrm{e}^{\mathrm{i}\frac{\theta_1+\theta_2+\theta_3}{3}}.
+\end{align*}
+
+在 \(\rho_1\to0\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_1\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-1\right)\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-1\right)} \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} = \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+在 \(\rho_2\to0\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_2\left(1-\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}\right)\left(\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}-\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}\right)} \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} = \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+在 \(\rho_3\to0\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_3\left(1-\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\right)\left(\mathrm{e}^{\mathrm{i}\frac{2\pi}{3}}-\mathrm{e}^{\mathrm{i}\frac{4\pi}{3}}\right)} \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} = \mathrm{e}^{\mathrm{i}\frac{2\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+同时绕两个分支点时，
+\begin{align*}
+f(z_{\text{终}}) = \mathrm{e}^{\mathrm{i}\frac{4\pi}{3}} f(z_{\text{初}}).
+\end{align*}
+
+同时绕三个分支点，即当 \(\rho_1,\rho_2,\rho_3\to\infty\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \sqrt[3]{\rho_1\rho_2\rho_3}\ \mathrm{e}^{\mathrm{i}\frac{6\pi}{3}} = \sqrt[3]{\rho_1\rho_2\rho_3} = f(z_{\text{初}}).
+\end{align*}
+\subsection{}
+Branch point: \(\mathrm{i},\ -\mathrm{i},\ \infty\).
+\begin{align*}
+f(z) &= \ln\left[(z+\mrm i)(z-\mrm i)\right] \\&= \ln(z+\mrm i) + \ln(z-\mrm i) \\
+&= \ln|z+\mrm i| + \ln|z-\mrm i| + \mathrm{i}\arg(z+\mrm i) + \mathrm{i}\arg(z-\mrm i).
+\end{align*}
+
+Let
+\begin{align*}
+z+\mrm i &= \rho_1 \mathrm{e}^{\mathrm{i}\theta_1}, \\
+z-\mrm i &= \rho_2 \mathrm{e}^{\mathrm{i}\theta_2}.
+\end{align*}
+
+在 \(\rho_1\to0\) 时，
+\begin{align*}
+z-\mrm i &\approx -2\mrm i, \\
+f(z) &\approx \ln|\rho_1| + \ln 2 -\mrm i\frac{\pi}{2}+ \mathrm{i}\theta_1, \\
+f(z_{\text{终}}) &\approx \ln\left(2|\rho_1|\right) -\mrm i\frac{\pi}{2}+ \mathrm{i}2\pi = f(z_{\text{初}}) + \mathrm{i}2\pi.
+\end{align*}
+
+在 \(\rho_2\to0\) 时，
+\begin{align*}
+f(z_{\text{终}}) &\approx \ln\left(2|\rho_2|\right) +\mrm i\frac{\pi}{2}+ \mathrm{i}2\pi = f(z_{\text{初}}) + \mathrm{i}2\pi.
+\end{align*}
+
+\(\rho_1,\rho_2\to\infty\) 时，
+\begin{align*}
+f(z_{\text{初}}) &= \ln|\rho_1\rho_2| + \mathrm{i}(\theta_1+\theta_2), \\
+f(z_{\text{终}}) &= \ln|\rho_1\rho_2| + \mathrm{i}4\pi = f(z_{\text{初}}) + \mathrm{i}4\pi.
+\end{align*}
+\subsection{}
+Branch point: \(\frac{\pi}{2} + n\pi,\ n\in\mathbb{Z}\).
+
+\(\ln(w)\) 的定义域为 \(\mathbb{C} - \text{某一割线}\).
+\begin{align*}
+\ln(w) &= \ln|w| + \mathrm{i}\arg(w),
+\end{align*}
+割线端点为 \(w=0\) 和无穷远点.
+
+而 \(w=\cos z\) 有限，考虑 \(\cos z=0\)，此时
+\begin{align*}
+z = \frac{\pi}{2} + n\pi,\ n\in\mathbb{Z}.
+\end{align*}
+
+绕任意一个分支点绕行一周时，
+\begin{align*}
+f(z_{\text{终}}) = \ln|\cos z| + \mathrm{i}2\pi = f(z_{\text{初}}) + \mathrm{i}2\pi.
+\end{align*}
+
+绕 \(k\) 个分支点绕行一周时，
+\begin{align*}
+f(z_{\text{终}}) = \ln|\cos z| + \mathrm{i}2k\pi = f(z_{\text{初}}) + \mathrm{i}2k\pi,\quad k\in\mathbb{Z}^+.
+\end{align*}
+
+由于无穷远点的任意邻域均有无穷多个分支点，无法通过绕行足够大的圆周判断无穷远点是否是分支点. 若作变量代换\(t=\frac{1}{z},\) 则绕行一周的计算结果可以是发散的，且取决于绕行的路径，仍无法判断无穷远点是否是分支点.
+\section{}
+规定割线上岸 \(\arg(z) = \arg(1-z) = 0\),
+则 \(z = \mathrm{i}\) 时,
+\begin{align*}
+\arg(z) &= \frac{\pi}{2}, \\
+\arg(1-z) &= -\frac{\pi}{4}, 
+\end{align*}
+\begin{align*}
+f(z) &= z^{-p}(1-z)^p \\
+&= \left| \frac{1-z}{z} \right|^p \mathrm{e}^{\mathrm{i} p \left[ \arg(1-z) - \arg(z) \right]}, \\
+f(\mathrm{i}) &= 2^{p/2} \mathrm{e}^{-\mathrm{i} \frac{3}{4} \pi p}.
+\end{align*}
+
+\(z = -\mathrm{i}\) 时, 不经过割线使\(z\)到达\(\mrm i\),
+\begin{align*}
+\arg(z) &= \frac{3\pi}{2}, \\
+\arg(1-z) &= \frac{\pi}{4}, \\
+f(-\mathrm{i}) &= 2^{p/2} \mathrm{e}^{-\mathrm{i} \frac{5}{4} \pi p}.
+\end{align*}
+
+\(z \to \infty\) 时, 不经过割线绕转使 \(z \to \infty\), 则
+\begin{align*}
+\arg(1-z) &= -\left[ \pi - \arg(z) \right] = -\pi + \arg(z), \\
+\lim_{z \to \infty} \left| \frac{1-z}{z} \right| &= \lim_{z \to \infty} \left| \frac{1}{z} - 1 \right| = |-1| = 1, \\
+f(\infty) &= \left| \frac{1-z}{z} \right| \mathrm{e}^{\mathrm{i} p \left[ \arg(1-z) - \arg(z) \right]} \\
+&= \mathrm{e}^{-\mathrm{i} \pi p}.
+\end{align*}
+\section{}
+\begin{align*}
+f(z) &= \arctan z \\
+&= \frac{1}{2\mathrm{i}} \ln\left( \frac{1+\mathrm{i}z}{1-\mathrm{i}z} \right).
+\end{align*}
+\begin{align*}
+\frac{\mathrm{d}f(z)}{\mathrm{d}z} &= \frac{1}{(1+\mathrm{i}z)(1-\mathrm{i}z)} \\
+&= \frac{1}{1+z^2}.
+\end{align*}
+\begin{align*}
+\left. \frac{\mathrm{d}f(z)}{\mathrm{d}z} \right|_{z=2} &= \frac{1}{1+4} \\
+&= \frac{1}{5}.
+\end{align*}
+\end{document}
